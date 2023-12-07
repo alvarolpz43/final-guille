@@ -15,4 +15,3 @@ dependencyResolutionManagement {
 
 rootProject.name = "final-guillermo"
 include(":app")
- 

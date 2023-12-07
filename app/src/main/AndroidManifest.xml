@@ -12,14 +12,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Finalguillermo"
         tools:targetApi="31">
+        <activity
+            android:name=".RouteMapActivity"
+            android:exported="false" />
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyC_Sy0EkVsnpx6jMCEseofJVcwY3Adxn9o"/>
+            android:value="AIzaSyC_Sy0EkVsnpx6jMCEseofJVcwY3Adxn9o" />
+
         <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".RouteMapActivity"
+            android:name=".Splash"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

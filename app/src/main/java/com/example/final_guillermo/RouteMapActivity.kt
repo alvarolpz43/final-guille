@@ -25,11 +25,12 @@ class RouteMapActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
 
-    fun getRetrofit():Retrofit{
-        return  Retrofit.Builder()
-            .baseUrl("https://api.openrouteservice.org/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-    }
+    //fun getRetrofit():Retrofit{
+       // return  Retrofit.Builder()
+       //    .baseUrl("https://api.openrouteservice.org/")
+        //    .addConverterFactory(GsonConverterFactory.create())
+       //     .build()
+      //  println("so")
+  //  }
 
 }

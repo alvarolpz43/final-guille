@@ -5,8 +5,8 @@ import android.os.Bundle
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+//import retrofit2.Retrofit
+//import retrofit2.converter.gson.GsonConverterFactory
 
 class RouteMapActivity : AppCompatActivity(), OnMapReadyCallback {
 

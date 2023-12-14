@@ -1,7 +1,6 @@
 package com.example.final_guillermo
 
 import android.content.Context
-import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -18,39 +17,29 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        sharedPreferences = getSharedPreferences("Credenciales", Context.MODE_PRIVATE)
+        sharedPreferences = getSharedPreferences("Usuarios", Context.MODE_PRIVATE)
 
         binding.botonregister.setOnClickListener {
             val usu = binding.email.text.toString()
             val contra = binding.contraseA.text.toString()
 
-            // Verificar si el usuario y la contraseña coinciden con los guardados
-            val usuarioGuardado = sharedPreferences.getString("nombre_usuario", usu)
-            val contrasenaGuardada = sharedPreferences.getString("contrasena", contra)
+            // Verificar si ya existe el usuario en SharedPreferences
+            val usuarioExistente = sharedPreferences.getStringSet(usu, null)
 
-            if (usu == usuarioGuardado && contra == contrasenaGuardada) {
-                val intent = Intent(this, RouteMapActivity::class.java)
-                startActivity(intent)
-                finish()
+            if (usuarioExistente == null) {
+                // Si el usuario no existe, crear un nuevo conjunto de datos para él
+                val newUserData = HashSet<String>()
+                newUserData.add(usu)
+                newUserData.add(contra)
+
+                val editor = sharedPreferences.edit()
+                editor.putStringSet(usu, newUserData)
+                editor.apply()
+
+                Toast.makeText(this, "¡Registro exitoso!", Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(this, "Credenciales incorrectas", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "El usuario ya está registrado", Toast.LENGTH_SHORT).show()
             }
         }
-
-        // Si deseas implementar el registro de usuarios, podrías hacerlo aquí
-        // Al hacer clic en un botón de registro o mediante otro método
-        // Guardarías los datos ingresados en los campos de texto en SharedPreferences
-        // por ejemplo, al registrar:
-        /*
-        binding.buttonRegister.setOnClickListener {
-            val nombreUsuario = binding.email.text.toString()
-            val contrasena = binding.contraseA.text.toString()
-
-            val editor = sharedPreferences.edit()
-            editor.putString("nombre_usuario", nombreUsuario)
-            editor.putString("contrasena", contrasena)
-            editor.apply()
-        }
-        */
     }
 }

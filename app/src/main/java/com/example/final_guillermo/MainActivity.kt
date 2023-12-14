@@ -36,9 +36,9 @@ class MainActivity : AppCompatActivity() {
                 editor.putStringSet(usu, newUserData)
                 editor.apply()
 
-                Toast.makeText(this, "¡Registro exitoso!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "¡Registro exitoso o q!", Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(this, "El usuario ya está registrado", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "El usuario ya está registrado o q", Toast.LENGTH_SHORT).show()
             }
         }
     }
